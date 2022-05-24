@@ -1,0 +1,22 @@
+.addtask {
+    &__inputgrp {
+        input {
+            box-shadow: none !important;
+            border-bottom: 1px solid #6c757d;
+            border-left: 1px solid #6c757d;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 1.1rem;
+            color: #5c5c5c !important;
+        }
+        button {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 1.1rem;
+            &:focus {
+                box-shadow: none;
+            }
+        }
+        svg {
+            width: 20px;
+        }
+    }
+}
