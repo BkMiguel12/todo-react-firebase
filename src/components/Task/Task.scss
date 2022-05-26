@@ -1,0 +1,56 @@
+.task {
+    width: 100%;
+    min-height: 4rem;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #dadada;
+    position: relative;
+
+    &:last-of-type {
+        border-bottom: none;
+    }
+
+    svg {
+        width: 1.3rem;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    &__text {
+        font-size: 1.5rem;
+    }
+
+    &__check{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-right: 1px solid #dadada;
+        height: 4rem;
+        width: 4rem;
+        margin-right: 1.8rem;
+
+        svg {
+            &:hover {
+                fill: #02a402;
+            }
+        }
+    }
+
+    &__delete {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-left: 1px solid #dadada;
+        height: 4rem;
+        width: 4rem;
+        position: absolute;
+        right: 0;
+
+        svg {
+            &:hover {
+                fill: #cc0000;
+            }
+        }
+    }
+}

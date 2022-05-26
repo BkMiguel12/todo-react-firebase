@@ -1,12 +1,38 @@
 .todolist {
     &__title {
-        color:  #1988f0;
+        color:  #5619f0;
         background-color: #ffffff;
         border-top-left-radius: 1.1rem;
         border-top-right-radius: 1.1rem;
+        border-bottom: 1px solid #6c757d;
 
         h2 {
             letter-spacing: 0.5rem;
         }
+    }
+
+    &__list {
+        background-color: #fff;
+        max-height: 60vh;
+        overflow-y: auto;
+        &_loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            span {
+                margin-top: 1.3rem;
+                font-size: 1.3rem;
+            }
+        }
+    }
+
+    &__list, &__title {
+        border-left: 1px solid #6c757d;
+        border-right: 1px solid #6c757d;
+    }
+
+    &__input {
+        border-top: 1px solid #6c757d;
     }
 }

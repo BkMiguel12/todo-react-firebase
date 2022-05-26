@@ -2,18 +2,21 @@ import { useState, useEffect } from 'react';
 import { db } from '../../utils/firebase.js';
 import { collection, getDocs, query, orderBy } from "firebase/firestore";
 
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, Spinner } from 'react-bootstrap';
+
 import AddTask from '../AddTask/AddTask';
 import Task from '../Task/Task';
+
 import './List.scss';
 
 function List() {
 
-    const [tasks, setTasks] = useState([]);
+    const [tasks, setTasks] = useState(null);
+    const [reloadTasks, setReloadTasks] = useState(false);
 
     useEffect(() => {
         getTasks();
-    }, []);
+    }, [reloadTasks]);
 
     const getTasks = async () => {
         try {
@@ -32,6 +35,7 @@ function List() {
                 arrayTasks.push(data);
             });
             setTasks(arrayTasks)
+            setReloadTasks(false);
         } catch (error) {
             console.log(error);
         }
@@ -48,23 +52,32 @@ function List() {
 
             <Col 
                 md={{ span: 8, offset: 2 }}
-                className='todolist__list mt-2 text-center'
+                className='todolist__list my-0 px-0'
             >
                 {/* Task Component */}
                 {
-                    tasks.map(task => {
-                        return (
-                            <Task task={task} key={task.id} />
-                        )
-                    })
+                    !tasks ? (
+                        <div className="todolist__list_loading py-5">
+                            <Spinner animation="grow" />
+                            <span>Loading...</span>
+                        </div>
+                    ) : tasks.length === 0 ? (
+                        <h3 className='text-center py-5'>No tasks added.</h3>
+                    ) : (
+                        tasks.map(task => {
+                            return (
+                                <Task task={task} key={task.id} />
+                            )
+                        })
+                    )
                 }
             </Col>
 
             <Col 
                 md={{ span: 8, offset: 2 }}
-                className='todolist__input mt-2 px-0 text-center'
+                className='todolist__input px-0 text-center'
             >
-                <AddTask />
+                <AddTask setReloadTasks={setReloadTasks}/>
             </Col>
         </Row>
     )

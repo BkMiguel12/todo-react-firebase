@@ -1,13 +1,16 @@
 import { useState } from 'react';
 import { Button, Form, InputGroup, FormControl } from 'react-bootstrap';
 import { isEmpty } from 'lodash';
+import { toast } from 'react-toastify';
+
 import { db } from '../../utils/firebase.js';
 import { collection, addDoc } from "firebase/firestore";
 
 import { ReactComponent as Send } from '../../assets/send.svg';
 import './AddTask.scss';
 
-function AddTask() {
+function AddTask(props) {
+    const { setReloadTasks } = props;
     const [task, setTask] = useState('');
 
     const onSubmit = (e) => {
@@ -25,7 +28,8 @@ function AddTask() {
         try {
             const docRef = await addDoc(collection(db, "tasks"), newTask);
             setTask('');
-            console.log("Document written with ID: ", docRef.id);
+            setReloadTasks(true);
+            toast.success('Task saved successfully', { theme: 'dark' });
         } catch (e) {
             console.error("Error adding document: ", e);
         }
@@ -40,7 +44,7 @@ function AddTask() {
                     onChange={(e) => { setTask(e.target.value) }}
                     value={task}
                 />
-                <Button variant="outline-secondary" type='submit'>
+                <Button type='submit'>
                     <Send />
                 </Button>
             </InputGroup>

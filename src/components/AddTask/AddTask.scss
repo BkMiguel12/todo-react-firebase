@@ -2,6 +2,7 @@
     &__inputgrp {
         input {
             box-shadow: none !important;
+            border-top: none;
             border-bottom: 1px solid #6c757d;
             border-left: 1px solid #6c757d;
             border-top-left-radius: 0;
@@ -11,12 +12,23 @@
         button {
             border-top-right-radius: 0;
             border-bottom-right-radius: 1.1rem;
+            border-right: 1px solid #4514c2;
+            border-left: 1px solid #4514c2;
+            border-bottom: 1px solid #4514c2;
+            border-top: none;
+            width: 4rem;
+            background-color: #5619f0;
             &:focus {
                 box-shadow: none;
+            }
+            &:hover, &:active, &:focus {
+                background-color: #5619f0;
+                border-color: #5619f0;
             }
         }
         svg {
             width: 20px;
+            fill: #fff;
         }
     }
 }
