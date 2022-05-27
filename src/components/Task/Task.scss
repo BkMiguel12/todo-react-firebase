@@ -21,7 +21,7 @@
         font-size: 1.5rem;
     }
 
-    &__check{
+    &__check {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -32,8 +32,11 @@
 
         svg {
             &:hover {
-                fill: #02a402;
+                fill: #06d006;
             }
+        }
+        .completed {
+            fill: #06d006;
         }
     }
 

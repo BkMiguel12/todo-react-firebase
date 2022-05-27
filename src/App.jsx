@@ -17,7 +17,7 @@ function App() {
     <Container fluid className='px-0'>
       <Header />
       <List />
-      <ToastContainer />
+      <ToastContainer autoClose={2000} />
     </Container>
   )
 }
